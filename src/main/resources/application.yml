@@ -1,0 +1,16 @@
+firebase:
+  project-id: ...
+  project-key: ...
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://securetoken.google.com/${firebase.project-id}
+          jwk-set-uri: https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com
+          audiences: ${firebase.project-id}
+
+logging:
+  level:
+    org.springframework.security: trace
