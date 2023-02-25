@@ -19,7 +19,8 @@ public class SecurityConfig {
             .authorizeHttpRequests(requests -> requests
                 .requestMatchers(HttpMethod.GET, "/public").permitAll()
                 .requestMatchers(HttpMethod.POST, "/register").permitAll()
-                .requestMatchers(HttpMethod.POST, "/token/**").permitAll()
+                .requestMatchers(HttpMethod.POST, "/token/fetch").permitAll()
+                .requestMatchers(HttpMethod.POST, "/token/refresh").permitAll()
                 .anyRequest().authenticated())
             .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
             .build();
